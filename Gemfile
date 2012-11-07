@@ -33,6 +33,7 @@ gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootst
 gem 'formtastic-bootstrap', :git => "git://github.com/katastrophie/formtastic-bootstrap.git"
 gem 'prawn'
 gem 'prawn_rails'
+gem 'bluecloth', '>= 2.0.0'
 
 group :development, :test do
   gem 'ruby-debug', :platforms => :mri_18
