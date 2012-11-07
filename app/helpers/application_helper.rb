@@ -40,6 +40,10 @@ module ApplicationHelper
     render "shared/dynamic_association", :association_name => association_name, :title => title, :f => form_builder, :hint => options[:hint]
   end
 
+  def markdown_format(text)
+    BlueCloth.new(text).to_html.html_safe
+  end
+
   def translated_options(collection)
     result = Array.new
     collection.each do |element|

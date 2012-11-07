@@ -2,8 +2,8 @@
 
 .column.left#basic
   = image_box(@speaker.avatar, :large)
-  = simple_format @speaker.abstract, :class => "abstract"
-  = simple_format @speaker.description, :class => "description"
+  .abstract= markdown_format @speaker.abstract
+  .description= markdown_format @speaker.description
 
 .column.left#details
   - if @speaker.email_public?
