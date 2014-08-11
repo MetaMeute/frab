@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140329001424) do
+ActiveRecord::Schema.define(:version => 20140811233055) do
 
   create_table "availabilities", :force => true do |t|
     t.integer  "person_id"
@@ -99,6 +99,11 @@ ActiveRecord::Schema.define(:version => 20140329001424) do
 
   add_index "conflicts", ["event_id", "conflicting_event_id"], :name => "index_conflicts_on_event_id"
   add_index "conflicts", ["person_id"], :name => "index_conflicts_on_person_id"
+
+  create_table "day_separators", :force => true do |t|
+    t.integer  "day_id", :null => false
+    t.datetime "time",   :null => false
+  end
 
   create_table "days", :force => true do |t|
     t.integer  "conference_id"

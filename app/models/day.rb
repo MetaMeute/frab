@@ -14,6 +14,9 @@ class Day < ActiveRecord::Base
   #           or a.end_time.between?(day.start_date, day.end_date)
   #           or day.start_date.between?(a.start_time, a.end_time) }
   has_many :availabilities
+  has_many :day_separators, :dependent => :destroy, :uniq => true
+
+  accepts_nested_attributes_for :day_separators, :reject_if => :all_blank, :allow_destroy => true
 
   has_paper_trail meta: {associated_id: :conference_id, associated_type: "Conference"}
 
