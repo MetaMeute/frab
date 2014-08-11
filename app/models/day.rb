@@ -14,9 +14,9 @@ class Day < ActiveRecord::Base
   #           or a.end_time.between?(day.start_date, day.end_date)
   #           or day.start_date.between?(a.start_time, a.end_time) }
   has_many :availabilities
-  has_many :day_separators, :dependent => :destroy, :uniq => true
+  has_many :day_separators, :dependent => :destroy, :uniq => true, :validate => false
 
-  accepts_nested_attributes_for :day_separators, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :day_separators, :allow_destroy => true
 
   has_paper_trail meta: {associated_id: :conference_id, associated_type: "Conference"}
 
@@ -26,6 +26,8 @@ class Day < ActiveRecord::Base
   validates_presence_of :end_date, message: "missing end date"
   validate :start_date_before_end_date, message: "failed validation"
   validate :does_not_overlap, message: "overlaps, failed validation"
+
+  after_save :validate_day_separators
 
   def start_date_before_end_date
     self.errors.add(:end_date, "should be after start date") if self.start_date >= self.end_date
@@ -39,6 +41,13 @@ class Day < ActiveRecord::Base
       self.errors.add(:end_date, "day overlapping with day #{day.label} from this conference") if self.end_date.between?(day.start_date, day.end_date)
     }
   end
+
+  def validate_day_separators
+    self.day_separators.each do |sep|
+      raise ActiveRecord::Rollback unless sep.valid?
+    end
+  end
+
 
   def label
     self.start_date.strftime('%Y-%m-%d')
