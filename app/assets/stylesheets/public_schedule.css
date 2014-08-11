@@ -281,7 +281,17 @@ h3.title {
   float: left;
 }
 
-p.abstract {
+.column#basic ul {
+  margin-left: 0;
+}
+
+.column#basic ul li {
+  position: relative;
+  left: 2em;
+  padding-right: 2em;
+}
+
+.abstract {
   font-style: italic;
 }
 

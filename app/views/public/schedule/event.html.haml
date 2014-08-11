@@ -3,8 +3,8 @@
 
 .column.left#basic
   = image_box(@event.logo, :large)
-  = simple_format @event.abstract, :class => "abstract"
-  = simple_format @event.description, :class => "description"
+  .abstract= markdown_format @event.abstract
+  .description= markdown_format @event.description
 
 .column.left#details
   %h3= t '.info'

@@ -49,10 +49,9 @@
           = @event.language
     .row
       .span6
-        %p
-          %b Abstract:
-          %br/
-          = simple_format @event.abstract
+        %b Abstract:
+        %br/
+        = markdown_format @event.abstract
         - unless @event.links.empty?
           %p
             %b Links:
@@ -68,10 +67,9 @@
               = link_to attachment.link_title, attachment.attachment.url
               %br/
       .span10
-        %p
-          %b Description:
-          %br/
-          = simple_format @event.description
+        %b Description:
+        %br/
+        = markdown_format @event.description
   .row
     .span16
       %h2 My rating

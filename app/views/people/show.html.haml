@@ -70,9 +70,8 @@
       %h2 Bio
   .row
     .span6
-      %p
-        %b Abstract:
-        = simple_format @person.abstract
+      %b Abstract:
+      = markdown_format @person.abstract
       %p
         %b Links:
         %br/
@@ -80,13 +79,11 @@
           = link_to link.title, link.url
           %br/
     .span10
-      %p
-        %b Description:
-        = simple_format @person.description
+      %b Description:
+      = markdown_format @person.description
     .span10
-      %p
-        %b Notes(admin):
-        = @person.note
+      %b Notes(admin):
+      = markdown_format @person.note
 %section
   .row
     .span16

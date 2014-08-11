@@ -87,13 +87,11 @@
       %h2 Content
   .row
     .span6
-      %p
-        %b Abstract:
-        = simple_format @event.abstract
+      %b Abstract:
+      = markdown_format @event.abstract
     .span10
-      %p
-        %b Description:
-        = simple_format @event.description
+      %b Description:
+      = markdown_format @event.description
       %p
         - if @event.links.any?
           %b Links:
@@ -113,10 +111,8 @@
   .row
     - if can? :crud, @event 
       .span8
-        %p
-          %b Notes(admin):
-          = @event.note
+        %b Notes(admin):
+        = markdown_format @event.note
     .span8
-      %p
-        %b Submission Notes(user and admin):
-        = @event.submission_note
+      %b Submission Notes(user and admin):
+      = markdown_format @event.submission_note
