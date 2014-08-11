@@ -130,6 +130,18 @@ div#add-event-modal {
   overflow: auto; 
 }
 
+.nested-fields fieldset legend {
+  font-size: 130%;
+}
+
+.day_separators fieldset div {
+  margin-bottom: 0.5em;
+}
+
+.day_separators fieldset hr {
+  margin: 10px 0;
+}
+
 p.availability span {
     float: right;
     margin-left: 5px;
