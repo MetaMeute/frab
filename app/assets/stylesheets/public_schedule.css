@@ -112,6 +112,7 @@ table.rooms-table {
   border-spacing: 0;
   background: #e4e4e4;
   position: relative;
+  margin-bottom: 15px;
 }
 
 table.rooms-table th {
