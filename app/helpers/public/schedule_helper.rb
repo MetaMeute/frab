@@ -30,7 +30,7 @@ module Public::ScheduleHelper
     rooms = Array.new @conference.rooms.public
 
     rooms.keep_if do |room|
-      @events[room].any? { |event| event.start_time >= start_time and event.start_time < end_time }
+      (not @events[room].empty?) and @events[room].any? { |event| event.start_time >= start_time and event.start_time < end_time }
     end
   end
 
